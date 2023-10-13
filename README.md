@@ -1,7 +1,11 @@
 # Strast
 
 Strast is a versatile Python tool that transforms a string representation of a Python literal into the corresponding Python object, building upon the powerful [ast](https://docs.python.org/3/library/ast.html) module. The word "strast" also denotes "passion", reflecting our enthusiasm for data transformation. 
-![](./assets/strast.png)
+
+
+<div align="center">
+<img src="./assets/strast.png" width=500/>
+</div>
 
 ## Features
 - Transform string literals to Python objects seamlessly with the power of the `ast` module.
