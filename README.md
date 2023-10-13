@@ -4,7 +4,7 @@ Strast is a versatile Python tool that transforms a string representation of a P
 
 
 <div align="center">
-<img src="./assets/strast.png" width=500/>
+<img src="https://github.com/janthmueller/strast/blob/main/assets/strast.png" width=500/>
 </div>
 
 ## Features
