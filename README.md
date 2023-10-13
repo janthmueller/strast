@@ -20,6 +20,8 @@ pip install strast
 ```
 
 ## Usage
+
+See also [documentation](https://janthmueller.github.io/strast/docs/strast.html).
 ### Function
 ```python
 from strast import strast
