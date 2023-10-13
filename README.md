@@ -21,7 +21,6 @@ pip install strast
 
 ## Usage
 
-See also [documentation](https://janthmueller.github.io/strast/docs/strast.html).
 ### Function
 ```python
 from strast import strast
@@ -63,12 +62,7 @@ Output:
 ```
 {'a': 1, 'b': 2}
 ```
-
-## Testing
-To run tests:
-```bash
-python -m unittest discover
-```
+See also [documentation](https://janthmueller.github.io/strast/docs/strast.html)
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
