@@ -1,7 +1,7 @@
-from . import strast
+from . import c
 
 
-def create_strast(
+def strast(
     *default_only_types,
     default_grab_types=None,
     default_force_ast=False,
@@ -24,7 +24,8 @@ def create_strast(
         function: A `strast` function pre-configured with the provided default settings.
 
     Usage:
-        >>> custom_strast = create_strast(int, default_force_str=True)
+        >>> import strast
+        >>> custom_strast = strast.f(int, default_force_str=True)
         >>> custom_strast("123")  # Uses default settings from the factory
         123
 
@@ -44,7 +45,7 @@ def create_strast(
         if not only_types:
             only_types = default_only_types
 
-        return strast(
+        return c(
             val,
             *only_types,
             grab_types=grab_types,

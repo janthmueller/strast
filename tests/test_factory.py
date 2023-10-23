@@ -1,10 +1,10 @@
 import unittest
-from strast import strastf
+import strast
 
 
 class TestStrastFactory(unittest.TestCase):
     def test_factory_creation(self):
-        my_strast = strastf(int)
+        my_strast = strast.f(int)
         self.assertEqual(my_strast("123"), 123)
 
 

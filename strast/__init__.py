@@ -1,6 +1,4 @@
-"""
-.. include:: ../README.md
-"""
-from .core import strast
-from .factory import create_strast
-from .class_based import Strast
+__version__ = "0.1.0"
+from strast.core import strast as c
+from strast.factory import strast as f
+from strast.class_based import Strast as S

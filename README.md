@@ -2,11 +2,6 @@
 
 Strast is a versatile Python tool that transforms a string representation of a Python literal into the corresponding Python object, building upon the powerful [ast](https://docs.python.org/3/library/ast.html) module. The word "strast" also denotes "passion", reflecting our enthusiasm for data transformation. 
 
-
-<div align="center">
-<img src="https://github.com/janthmueller/strast/blob/main/assets/strast.png" width=500/>
-</div>
-
 ## Features
 - Transform string literals to Python objects seamlessly with the power of the `ast` module.
 - Flexible type checking to ensure data integrity.
@@ -20,12 +15,13 @@ pip install strast
 ```
 
 ## Usage
-
-### Function
 ```python
-from strast import strast
-
-result = strast("{'a': 1, 'b': 2}", dict)
+import strast
+```
+### Function
+`strast`s core function:
+```python
+result = strast.c("{'a': 1, 'b': 2}", dict) # or strast.core.strast
 print(result)
 print(strast("{'a': 1, 'b': 2}", list))
 ```
@@ -36,10 +32,9 @@ TypeError: Expected <class 'list'>, got <class 'dict'> instead.
 ```
 
 ### Factory
+`strast` as a closure factory function:
 ```python
-from strast import create_strast
-
-strast = create_strast(dict, list, tuple)
+strast = strast.f(dict, list, tuple) # or strast.factory.strast
 print(strast("{'a': 1, 'b': 2}"))
 print(strast("[1, 2, 3]"))
 print(strast("('a', 'b', 'c')"))
@@ -52,10 +47,9 @@ Output:
 ```
 
 ### Class-based
+`strast` as a class:
 ```python
-from strast import Strast
-
-strast = Strast(dict)
+strast = strast.S(dict) # or strast.class_based.Strast
 print(strast.transform("{'a': 1, 'b': 2}"))
 ```
 Output:

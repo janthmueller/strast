@@ -1,9 +1,9 @@
-from . import strast
+from . import c
 
 
 class Strast:
     """
-    A class-based interface to the `strast` function, allowing for persistent default configurations.
+    A class-based interface to the `strast.core.strast` function, allowing for persistent default configurations.
 
     This class provides a way to create instances of `Strast` with specific default behaviors,
     such as type-checking, AST enforcement, automatic type detection, and ensuring the input is
@@ -24,7 +24,8 @@ class Strast:
             Alias for the transform method, allowing the instance to be called directly.
 
     Usage:
-        >>> converter = Strast(int, default_force_str=True)
+        >>> import strast
+        >>> converter = strast.S(int, default_force_str=True)
         >>> converter.transform("123")  # Uses default settings from the instance
         123
 
@@ -56,7 +57,7 @@ class Strast:
         if not only_types:
             only_types = self.default_only_types
 
-        return strast(
+        return c(
             val,
             *only_types,
             grab_types=grab_types,

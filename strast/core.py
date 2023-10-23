@@ -1,5 +1,6 @@
 import ast
 
+
 def strast(val, *only_types, grab_types=None, force_ast=False, force_str=False):
     """
     Transforms a string representation of a Python literal into the corresponding Python object.
@@ -33,29 +34,30 @@ def strast(val, *only_types, grab_types=None, force_ast=False, force_str=False):
 
     Examples:
         # Basic usage
-        >>> strast("123")
+        >>> import strast
+        >>> strast.c("123")
         123
 
         # With type checking
-        >>> strast("123", int)
+        >>> strast.c("123", int)
         123
 
         # Raises error for type mismatch
-        >>> strast("123", str)
+        >>> strast.c("123", str)
         ValueError: Expected result type to be among (<class 'str'>,), but got <class 'int'>.
 
         # With automatic type detection
-        >>> strast("123", 1, grab_types=True)
+        >>> strast.c("123", 1, grab_types=True)
         123
 
         # AST enforcement
-        >>> strast("hello", str, force_ast=True)
+        >>> strast.c("hello", str, force_ast=True)
         Raises: ValueError: malformed node or string: <_ast.Name object at ...> from ast.literal_eval
-        >>> strast("'hello'", str, force_ast=True)
+        >>> strast.c("'hello'", str, force_ast=True)
         'hello'
 
         # String input enforcement
-        >>> strast(123, force_str=True)
+        >>> strast.c(123, force_str=True)
         TypeError: Expected 'val' to be a string, but got <class 'int'>.
 
     """
@@ -66,25 +68,26 @@ def strast(val, *only_types, grab_types=None, force_ast=False, force_str=False):
         and isinstance(force_str, bool)
     )
     if force_str and not isinstance(val, str):
-        raise TypeError(f"Expected 'val' to be a string, but got {type(val)}.")
+        raise TypeError(
+            f"Expected 'val' to be a string, but got {val} of type {type(val)}."
+        )
 
-    if grab_types or grab_types is None:
-        only_types = list(only_types)
-        for i, t in enumerate(only_types):
-            if not isinstance(t, type):
-                if grab_types:
+    only_types = list(only_types)
+    for i, t in enumerate(only_types):
+        if not isinstance(t, type):
+            if grab_types:
+                only_types[i] = type(t)
+            elif grab_types is None:
+                if t is None:
                     only_types[i] = type(t)
-                elif grab_types is None:
-                    if t is None:
-                        only_types[i] = type(t)
-                    else:
-                        raise TypeError(
-                            f"Expected 'only_types' values to be types or None, but found {t}."
-                        )
                 else:
                     raise TypeError(
-                        f"Unsupported value in 'only_types': {t}. Check 'grab_types' settings."
+                        f"Expected 'only_types' values to be types or None, but found {t}."
                     )
+            else:
+                raise TypeError(
+                    f"Expected 'only_types' values to be types, but found {t}"
+                )
         only_types = tuple(only_types)
 
     try:
@@ -99,5 +102,5 @@ def strast(val, *only_types, grab_types=None, force_ast=False, force_str=False):
         return return_val
     else:
         raise ValueError(
-            f"Expected result type to be among {only_types}, but got {type(return_val)}."
+            f"Expected result type to be among {only_types}, but got {return_val} of type {type(return_val)}."
         )

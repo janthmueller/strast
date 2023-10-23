@@ -1,52 +1,39 @@
 # Copyright (c) 2023 Jan T. Müller <mail@jantmueller.com>
 
+import sys
+import os
 from setuptools import setup, find_packages
+import strast
+
+
+if sys.version_info < (3, 6):
+    sys.exit("ERROR: strast requires Python 3.6+")
 
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setup(
     name="strast",
-    version="0.1.0",
-    packages=find_packages(),
+    version=strast.__version__,
+    packages=find_packages(exclude=["tests"]),
     author="Jan T. Müller",
     author_email="mail@jantmueller.com",
     description="Transforms a string representation of a Python literal into the corresponding Python object.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/janthmueller/strast",
+    project_urls={
+        "Documentation": "https://janthmueller.github.io/strast/docs/strast.html",
+        "Source": "https://github.com/janthmueller/strast",
+        "Tracker": "https://github.com/janthmueller/strast/issues",
+    },
+    license="MIT",
     classifiers=[
-        "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",
         "Topic :: Software Development :: Libraries :: Python Modules",
         "License :: OSI Approved :: MIT License",
-        "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.6",
-        "Programming Language :: Python :: 3.7",
-        "Programming Language :: Python :: 3.8",
-        "Programming Language :: Python :: 3.9",
-    ],
-    keywords=[
-        "string",
-        "ast",
-        "python",
-        "literal",
-        "transformation",
-        "literal transformation",
-        "literal conversion",
-        "string transformation",
-        "string to literal",
-        "string to dict",
-        "string to set",
-        "string to list",
-        "string to tuple",
-        "string to int",
-        "string to float",
-        "string to bool",
-        "string to None",
-        "string to",
-        "string to anything",
-        "eval",
+        "Operating System :: OS Independent",
+        "Programming Language :: Python :: 3 :: Only",
     ],
     python_requires=">=3.6",
 )
