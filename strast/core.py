@@ -88,7 +88,7 @@ def strast(val, *only_types, grab_types=None, force_ast=False, force_str=False):
                 raise TypeError(
                     f"Expected 'only_types' values to be types, but found {t}"
                 )
-        only_types = tuple(only_types)
+    only_types = tuple(only_types)
 
     try:
         return_val = ast.literal_eval(val)

@@ -22,6 +22,7 @@ class TestStrastFunction(unittest.TestCase):
         self.assertEqual(strast.c("{1,2,3}", set), {1, 2, 3})
         self.assertEqual(strast.c("None", None, grab_types=None), None)
         self.assertEqual(strast.c(123, int), 123)
+        self.assertEqual(strast.c(None, float, None), None)
 
     def test_raises(self):
         with self.assertRaises(ValueError):
